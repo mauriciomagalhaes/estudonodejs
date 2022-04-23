@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import MyComponet from './components/MyComponet';
 
 function App() {
+  const n = 15
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>React com CSS</h1>
+      <MyComponet />
+      <p>Este parágrafo de do APP.JS</p>
+      <p className="outrocss">Este tb é do componente </p>
+
+      <h2 style={n < 10
+        ? { color: "purple" }
+        : { color: "pink" }}>Css dinamico</h2>
+      <h2 style={n > 10 ? { color: "purple" } : { color: "pink" }}>Css dinamico</h2>
     </div>
   );
 }
