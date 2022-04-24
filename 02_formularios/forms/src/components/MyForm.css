@@ -1,0 +1,16 @@
+body {
+    background-color: darkgray;
+}
+
+form {
+    width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+input,
+textarea,
+select {
+    display: block;
+    margin: 10px 0;
+}
