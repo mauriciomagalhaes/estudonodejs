@@ -41,17 +41,11 @@ export const useFetch = (url) => {
     const httpRequest = async () => {
       if (method === "POST") {
         let fetchOptions = [url, config];
-
-        console.log(fetchOptions);
-
+        //console.log(fetchOptions);
         const res = await fetch(...fetchOptions);
-
-        console.log(res);
-
+        //console.log(res);
         const json = await res.json();
-
-        console.log(json);
-
+        //console.log(json);
         setCallFetch(json); //callFetch
       }
     };

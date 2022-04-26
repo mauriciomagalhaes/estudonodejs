@@ -51,59 +51,34 @@
       "id": 10
     },
     {
-      "name": "Radio",
-      "price": "200",
-      "id": 11
-    },
-    {
-      "name": "Radio",
-      "price": "200",
-      "id": 12
-    },
-    {
-      "name": "Radio",
-      "price": "200",
-      "id": 13
-    },
-    {
-      "name": "Radio",
-      "price": "200",
-      "id": 14
-    },
-    {
-      "name": "Radio",
-      "price": "200",
-      "id": 15
-    },
-    {
-      "name": "Radio",
-      "price": "200",
-      "id": 16
-    },
-    {
-      "name": "CElular",
+      "name": "Celular",
       "price": "20000",
       "id": 17
     },
     {
-      "name": "CElular",
-      "price": "20000",
-      "id": 18
-    },
-    {
-      "name": "Pizza",
-      "price": "20",
-      "id": 19
-    },
-    {
-      "name": "Pizza",
-      "price": "20",
-      "id": 20
-    },
-    {
-      "name": "teclad",
+      "name": "teclado",
       "price": "330",
       "id": 21
+    },
+    {
+      "name": "monitor",
+      "price": "500",
+      "id": 22
+    },
+    {
+      "name": "Oculos",
+      "price": "2",
+      "id": 23
+    },
+    {
+      "name": "Oculos",
+      "price": "2",
+      "id": 24
+    },
+    {
+      "name": "monitor",
+      "price": "500",
+      "id": 25
     }
   ]
 }
