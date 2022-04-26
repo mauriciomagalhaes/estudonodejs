@@ -10,9 +10,12 @@ const MyForm = ({ user }) => {
 
   const handleChange = (e) => setName(e.target.value);
 
+  const teste = "teste";
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(name, email, bio, role);
+
     setName("");
     setEmail("");
     setBio("");
@@ -26,11 +29,11 @@ const MyForm = ({ user }) => {
       {/*Criacao de formulario*/}
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Nome:</label>
+          <label htmlFor='name'>Nome:</label>
           <input
-            type="text"
-            name="nome"
-            placeholder="Digite seu nome"
+            type='text'
+            name='nome'
+            placeholder='Digite seu nome'
             value={name}
             onChange={handleChange}
           />
@@ -39,9 +42,9 @@ const MyForm = ({ user }) => {
         <label>
           <span>E-mail</span>
           <input
-            type="email"
-            name="email"
-            placeholder="Digite o seu e-mail"
+            type='email'
+            name='email'
+            placeholder='Digite o seu e-mail'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -49,22 +52,25 @@ const MyForm = ({ user }) => {
         <label>
           <span>Bio:</span>
           <textarea
-            name="bio"
-            placeholder="Descrição do usuário"
+            name='bio'
+            placeholder='Descrição do usuário'
             onChange={(e) => setBio(e.target.value)}
             value={bio}
           ></textarea>
         </label>
         <label>
           <span>Função do sistema:</span>
-          <select name="role" onChange={e => setRole(e.target.value)} value={role}>
-            <option value="user">Usuário</option>
-            <option value="editor">Editor</option>
-            <option value="admin">Administrador</option>
+          <select
+            name='role'
+            onChange={(e) => setRole(e.target.value)}
+            value={role}
+          >
+            <option value='user'>Usuário</option>
+            <option value='editor'>Editor</option>
+            <option value='admin'>Administrador</option>
           </select>
         </label>
-
-        <input type="submit" value="Enviar" />
+        <input type='submit' value='Enviar' />
       </form>
     </div>
   );
