@@ -8,6 +8,7 @@ export const useFetch = (url) => {
   const [method, setMethod] = useState(null);
   const [callFetch, setCallFetch] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   //console.log(callFetch);
 
@@ -29,11 +30,15 @@ export const useFetch = (url) => {
     const fetchData = async () => {
       setLoading(true);
 
-      const res = await fetch(url);
+      try {
+        const res = await fetch(url);
 
-      const json = await res.json();
+        const json = await res.json();
 
-      setData(json); //data
+        setData(json); //data
+      } catch (error) {
+        setError("Houve algum problema na requisição!");
+      }
 
       setLoading(false);
     };
@@ -56,5 +61,5 @@ export const useFetch = (url) => {
     };
     httpRequest();
   }, [config, method, url]);
-  return { data, httpConfig, loading };
+  return { data, httpConfig, loading, error };
 };

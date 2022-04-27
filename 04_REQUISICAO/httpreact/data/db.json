@@ -99,6 +99,11 @@
       "name": "bloco de notas",
       "price": "125",
       "id": 20
+    },
+    {
+      "name": "roteador",
+      "price": "1200",
+      "id": 21
     }
   ]
 }
