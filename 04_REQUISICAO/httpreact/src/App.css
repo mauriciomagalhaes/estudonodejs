@@ -56,3 +56,13 @@ form input{
 ul {
   list-style: none;
 }
+
+.list-products {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-products input {
+  margin-right: 100px;
+}
