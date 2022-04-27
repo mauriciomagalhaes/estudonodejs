@@ -9,7 +9,7 @@ function App() {
   //const [products, setProducts] = useState([]);
   const url = "http://localhost:3000/products";
 
-  const { data: item, httpConfig } = useFetch(url);
+  const { data: item, httpConfig, loading } = useFetch(url);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -50,14 +50,20 @@ function App() {
   return (
     <div className='App'>
       <h1>Lista de produtos</h1>
-      <ul>
-        {item &&
-          item.map((product) => (
-            <li key={product.id}>
-              {product.name} - R$: {product.price}
-            </li>
-          ))}
-      </ul>
+
+      {loading && <h1>Carregando...</h1>}
+
+      {!loading && (
+        <ul>
+          {item &&
+            item.map((product) => (
+              <li key={product.id}>
+                {product.name} - R$: {product.price}
+              </li>
+            ))}
+        </ul>
+      )}
+
       <div className='add-product'>
         <form onSubmit={handleSubmit}>
           <label>
@@ -78,7 +84,8 @@ function App() {
               onChange={(e) => setPrice(e.target.value)}
             />
           </label>
-          <input type='submit' value='Criar' />
+          {loading && <input type='submit' disabled value='Criar' />}
+          {!loading && <input type='submit' value='Criar' />}
         </form>
       </div>
     </div>

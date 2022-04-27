@@ -53,32 +53,52 @@
     {
       "name": "Celular",
       "price": "20000",
-      "id": 17
+      "id": 11
     },
     {
       "name": "teclado",
       "price": "330",
-      "id": 21
-    },
-    {
-      "name": "monitor",
-      "price": "500",
-      "id": 22
+      "id": 12
     },
     {
       "name": "Oculos",
       "price": "2",
-      "id": 23
-    },
-    {
-      "name": "Oculos",
-      "price": "2",
-      "id": 24
+      "id": 13
     },
     {
       "name": "monitor",
       "price": "500",
-      "id": 25
+      "id": 14
+    },
+    {
+      "name": "Caixa de Som",
+      "price": "47",
+      "id": 15
+    },
+    {
+      "name": "Suporte Monitor",
+      "price": "120",
+      "id": 16
+    },
+    {
+      "name": "camiseta",
+      "price": "10",
+      "id": 17
+    },
+    {
+      "name": "Quadro",
+      "price": "12",
+      "id": 18
+    },
+    {
+      "name": "vassoura",
+      "price": "10",
+      "id": 19
+    },
+    {
+      "name": "bloco de notas",
+      "price": "125",
+      "id": 20
     }
   ]
 }
