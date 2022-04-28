@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 /* Pages */
 import Home from "./pages/Home";
@@ -13,13 +13,13 @@ function App() {
   return (
     <div className='App'>
       <h1>React Router</h1>
-      <Router>
+      <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }

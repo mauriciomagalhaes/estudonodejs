@@ -3,9 +3,10 @@ import { useFetch } from "../hooks/useFetch";
 
 import "./Home.css";
 
-const home = () => {
+const Home = () => {
   //Carregar Dados
   const url = "http://localhost:3000/products";
+
   const { data: items, loading, error } = useFetch(url);
 
   return (
@@ -25,4 +26,4 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;
