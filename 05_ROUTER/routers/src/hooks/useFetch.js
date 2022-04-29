@@ -11,8 +11,6 @@ export const useFetch = (url) => {
   const [error, setError] = useState(null);
   const [itemId, setItemId] = useState(null);
 
-  //console.log(callFetch);
-
   const httpConfig = (data, method) => {
     if (method === "POST") {
       setConfig({
@@ -76,6 +74,6 @@ export const useFetch = (url) => {
       setCallFetch(json); //callFetch
     };
     httpRequest();
-  }, [config, method, url]);
+  }, [config, method, itemId, url]);
   return { data, httpConfig, loading, error };
 };

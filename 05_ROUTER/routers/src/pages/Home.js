@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+/* Hooks */
 import { useFetch } from "../hooks/useFetch";
 
+/* Styles */
 import "./Home.css";
 
 const Home = () => {
@@ -13,6 +15,7 @@ const Home = () => {
     <div>
       <h1>Produtos</h1>
       {error && <p>{error}</p>}
+      {loading && <p>Carregando...</p>}
       <ul className='products'>
         {items &&
           items.map((item) => (
