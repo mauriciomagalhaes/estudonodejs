@@ -1,18 +1,25 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import "./SearchForm.css";
 
 const SearchForm = () => {
-  const [query, setQuery] = useState();
+    const navigate = useNavigate();
 
-  const [searchParam] = useSearchParams();
+    const [query, setQuery] = useState();
 
-  const url = "https://localhost:3000/";
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventEvent();
-  };
+        navigate("/search?q=" + query);
+    };
 
-  return <div>SearchForm</div>;
+    return (
+        <form onSubmit={handleSubmit}>
+            <input type='text' onChange={(e) => setQuery(e.target.value)} />
+            <input type='submit' value='Buscar' />
+        </form>
+    );
 };
 
 export default SearchForm;

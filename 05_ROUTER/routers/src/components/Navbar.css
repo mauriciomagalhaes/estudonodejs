@@ -1,6 +1,6 @@
 nav {
     display: flex;
-    justify-content: center
+    justify-content: center;
 }
 
 nav a {
@@ -10,11 +10,11 @@ nav a {
     margin: 0 10px;
 }
 
-nav a:hover{
-    color: #ccc
+nav a:hover {
+    color: #ccc;
 }
 
-.active{
+.active {
     background-color: #000;
-    color: #fff
+    color: #fff;
 }

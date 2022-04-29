@@ -6,29 +6,29 @@ import { useFetch } from "../hooks/useFetch";
 import "./Home.css";
 
 const Home = () => {
-  //Carregar Dados
-  const url = "http://localhost:3000/products";
+    //Carregar Dados
+    const url = "http://localhost:3000/products";
 
-  const { data: items, loading, error } = useFetch(url);
+    const { data: items, loading, error } = useFetch(url);
 
-  return (
-    <div>
-      <h1>Produtos</h1>
-      {error && <p>{error}</p>}
-      {loading && <p>Carregando...</p>}
-      <ul className='products'>
-        {items &&
-          items.map((item) => (
-            <li key={item.id}>
-              <h2>{item.name}</h2>
-              <p>R$:{item.price}</p>
-              {/* Rota dinâmica */}
-              <Link to={`/product/${item.id}`}>Detalhes</Link>
-            </li>
-          ))}
-      </ul>
-    </div>
-  );
+    return (
+        <div>
+            <h1>Produtos</h1>
+            {error && <p>{error}</p>}
+            {loading && <p>Carregando...</p>}
+            <ul className='products'>
+                {items &&
+                    items.map((item) => (
+                        <li key={item.id}>
+                            <h2>{item.name}</h2>
+                            <p>R$:{item.price}</p>
+                            {/* Rota dinâmica */}
+                            <Link to={`/product/${item.id}`}>Detalhes</Link>
+                        </li>
+                    ))}
+            </ul>
+        </div>
+    );
 };
 
 export default Home;
