@@ -12,6 +12,7 @@ import Info from "./pages/Info";
 
 /* Components */
 import Navbar from "./components/Navbar";
+import NotFound from "./pages/NotFound";
 
 /* Apps */
 function App() {
@@ -26,6 +27,7 @@ function App() {
           {/* Rota dinâmica */}
           <Route path='/product/:id' element={<Product />} />
           <Route path='/product/:id/info' element={<Info />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
