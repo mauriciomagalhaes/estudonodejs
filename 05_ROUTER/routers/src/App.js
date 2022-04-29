@@ -13,6 +13,7 @@ import Info from "./pages/Info";
 /* Components */
 import Navbar from "./components/Navbar";
 import NotFound from "./pages/NotFound";
+import SearchForm from "./components/SearchForm";
 
 /* Apps */
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <h1>React Router</h1>
       <BrowserRouter>
         <Navbar />
+        <SearchForm />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
