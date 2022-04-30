@@ -1,17 +1,18 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
-import Products from "./pages/Products";
-import About from "./pages/About";
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+/* Components */
+import Navbar from "./components/Navbar";
 
 /* Pages */
 import Home from "./pages/Home";
+import Products from "./pages/Products";
+import About from "./pages/About";
 
 function App() {
     return (
         <div className='App'>
-            <h1>Principal</h1>
+            {/* <h1>Principal</h1> */}
             <BrowserRouter>
                 <Navbar />
                 <Routes>
