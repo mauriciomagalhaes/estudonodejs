@@ -1,0 +1,14 @@
+.navbar {
+    margin-bottom: 2em;
+}
+
+.navbar a {
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.active {
+    background-color: #4caf50;
+    color: white;
+}
