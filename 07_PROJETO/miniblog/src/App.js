@@ -1,9 +1,15 @@
 import "./App.css";
 
+import { BrowserRouter, Routes, Route, Navgate } from "react-router-dom";
+
 function App() {
     return (
         <div className='App'>
-            <h1>MiniBlog</h1>
+            <BrowserRouter>
+                <div className='container'>
+                    <Routes></Routes>
+                </div>
+            </BrowserRouter>
         </div>
     );
 }
