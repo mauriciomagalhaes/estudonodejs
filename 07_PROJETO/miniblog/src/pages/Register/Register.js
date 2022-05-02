@@ -2,6 +2,9 @@ import styles from "./Register.module.css";
 
 import { useState, useEffect } from "react";
 
+/* Hooks */
+import { useAuthentication } from "../../hooks/useAuthentication";
+
 const Register = () => {
     const [displayName, setDisplayName] = useState("");
     const [email, setEmail] = useState("");
@@ -9,7 +12,9 @@ const Register = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
 
-    const handleSubmit = (e) => {
+    const { createUser, error: authError, loading } = useAuthentication();
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         setError("");
@@ -17,11 +22,11 @@ const Register = () => {
         const user = { displayName, email, password };
 
         if (password !== confirmPassword) {
-            setError("Senha diferentes");
+            setError("Senha estão diferentes");
             return;
         }
 
-        console.log(user);
+        const res = await createUser(user);
     };
 
     return (
