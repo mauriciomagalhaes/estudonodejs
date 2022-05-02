@@ -1,8 +1,8 @@
 import {
     getAuth,
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
     updateProfile,
+    signInWithEmailAndPassword,
     signOut,
 } from "firebase/auth";
 
@@ -10,9 +10,9 @@ import { useState, useEffect } from "react";
 
 export const useAuthentication = () => {
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(null);
 
-    /* Cleanup - deal memory leak  */
+    /* Cleanup - Deal memory leak  */
     const [cancelled, setCancelled] = useState(false);
 
     const auth = getAuth();
@@ -25,6 +25,7 @@ export const useAuthentication = () => {
 
     const createUser = async (data) => {
         checkIfIsCancelled();
+
         setLoading(true);
 
         try {
@@ -34,7 +35,9 @@ export const useAuthentication = () => {
                 data.password
             );
 
-            await updateProfile(user, { displayName: data.displayName });
+            await updateProfile(user, {
+                displayName: data.displayName,
+            });
 
             return user;
         } catch (error) {

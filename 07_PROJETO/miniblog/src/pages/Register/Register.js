@@ -1,8 +1,7 @@
 import styles from "./Register.module.css";
 
-import { useState, useEffect } from "react";
-
 /* Hooks */
+import { useState, useEffect } from "react";
 import { useAuthentication } from "../../hooks/useAuthentication";
 
 const Register = () => {
@@ -22,7 +21,7 @@ const Register = () => {
         const user = { displayName, email, password };
 
         if (password !== confirmPassword) {
-            setError("Senha estão diferentes");
+            setError("As senhas precisam ser iguais!");
             return;
         }
 
