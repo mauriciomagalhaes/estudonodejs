@@ -26,9 +26,22 @@ function App() {
     const [user, setUser] = useState(undefined);
     const { auth } = useAuthentication();
 
+    const loadingUser = user === undefined;
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            setUser(user);
+        });
+    });
+
+    if (loadingUser) {
+        return <p>Carregando...</p>;
+    }
+
     return (
         <div className='App'>
-            <AuthProvider>
+            {/* Send user to all components */}
+            <AuthProvider value={{ user }}>
                 <BrowserRouter>
                     <Navbar />
                     <div className='container'>
