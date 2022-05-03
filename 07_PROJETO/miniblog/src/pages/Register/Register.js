@@ -25,8 +25,14 @@ const Register = () => {
             return;
         }
 
-        const res = await createUser(user);
+        await createUser(user);
     };
+
+    useEffect(() => {
+        if (authError) {
+            setError(authError);
+        }
+    }, [authError]);
 
     return (
         <div className={styles.register}>
@@ -77,7 +83,13 @@ const Register = () => {
                         value={confirmPassword}
                     />
                 </label>
-                <button className='btn'>Cadastrar</button>
+
+                {!loading && <button className='btn'>Cadastrar</button>}
+                {loading && (
+                    <button className='btn' disable>
+                        Aguarde...
+                    </button>
+                )}
                 {error && <p className='error'>{error}</p>}
             </form>
         </div>
