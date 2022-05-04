@@ -1,17 +1,39 @@
 import styles from "./Login.module.css";
 
+/* Hooks */
+import { useState, useEffect } from "react";
+import { useAuthentication } from "../../hooks/useAuthentication";
+
 /* Modules */
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const Login = () => {
+    const { login, error: loginError, loading } = useAuthentication();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    //setError("");
+
+    const user = { email, password };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        await login(user);
+    };
+
+    useEffect(() => {
+        if (loginError) {
+            setError(loginError);
+        }
+    }, [loginError]);
 
     return (
         <div className={styles.login}>
             <h2>Login</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>
                     <span>E-mail:</span>
                     <input
@@ -35,6 +57,7 @@ const Login = () => {
                     />
                 </label>
                 <button className='btn'>Entrar</button>
+                {error && <p className='error'>{error}</p>}
             </form>
 
             <p>Para cadastrar</p>

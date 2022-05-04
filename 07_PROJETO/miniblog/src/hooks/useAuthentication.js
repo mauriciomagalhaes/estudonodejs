@@ -47,8 +47,10 @@ export const useAuthentication = () => {
 
             return user;
         } catch (error) {
+            /*
             console.log(error.message);
-            console.log(typeof error.message);
+            console.log(typeof error.message); 
+            */
 
             let systemErrorMessage;
 
@@ -88,12 +90,16 @@ export const useAuthentication = () => {
 
             return user;
         } catch (error) {
+            console.log(error);
             let systemErrorMessage;
 
-            if (error.message.includes("wrong-password")) {
+            if (error.message.includes("user-not-found")) {
+                systemErrorMessage = "Usuário incorreto";
+            } else if (error.message.includes("wrong-password")) {
                 systemErrorMessage = "Senha incorreta";
-            } else if (error.message.includes("user-not-found")) {
-                systemErrorMessage = "Usuário não encontrado";
+            } else if (error.message.includes(" temporarily disabled")) {
+                systemErrorMessage =
+                    "Muitas tentativas falhas, tente mais tarde";
             } else {
                 systemErrorMessage = "Erro desconhecido, tente mais tarde";
             }
