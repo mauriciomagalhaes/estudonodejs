@@ -90,7 +90,7 @@ export const useAuthentication = () => {
 
             return user;
         } catch (error) {
-            console.log(error);
+            //console.log(error);
             let systemErrorMessage;
 
             if (error.message.includes("user-not-found")) {

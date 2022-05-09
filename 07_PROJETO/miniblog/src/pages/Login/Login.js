@@ -16,10 +16,10 @@ const Login = () => {
 
     //setError("");
 
-    const user = { email, password };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const user = { email, password };
 
         await login(user);
     };
