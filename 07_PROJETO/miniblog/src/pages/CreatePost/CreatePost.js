@@ -11,8 +11,26 @@ const CreatePost = () => {
     const [tags, setTags] = useState([]);
     const [formError, setFormError] = useState("");
 
+    const { user } = useAuthValue();
+
+    //tags.split(",").map((tag) => tag.trim());
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const tagsArray = tags
+            .split(",")
+            .map((tag) => tag.trim().toLowerCase());
+
+        const post = {
+            title,
+            image,
+            body,
+            tags: tagsArray,
+            uid: user.uid,
+            createdBy: user.displayName,
+        };
+        console.log(post);
     };
 
     return (
