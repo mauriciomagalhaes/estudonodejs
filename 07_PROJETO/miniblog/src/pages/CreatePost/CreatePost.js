@@ -21,7 +21,16 @@ const CreatePost = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setFormError("");
 
+        // Validate url
+        /* try {
+            new URL(image);
+        } catch (error) {
+            setFormError("A imagem precisa ser uma URL.");
+        }
+ */
+        // Create array tags
         const tagsArray = tags
             .split(",")
             .map((tag) => tag.trim().toLowerCase());
@@ -35,7 +44,20 @@ const CreatePost = () => {
             createdBy: user.displayName,
         };
         //console.log(post);
-        insertDocument(post);
+
+        // check values
+        if (!title || !image || !tags || !body) {
+            setFormError("Por favor, preencha todos os campos!");
+        }
+        if (formError) return;
+
+        insertDocument({
+            title,
+            image,
+            body,
+            tags: tagsArray,
+            uid: user.uid,
+        });
     };
 
     return (
@@ -88,14 +110,16 @@ const CreatePost = () => {
                 </label>
 
                 {!response.loading && (
-                    <button className='btn'>Cadastrar</button>
+                    <button className='btn'>Criar post!</button>
                 )}
                 {response.loading && (
                     <button className='btn' disable>
                         Aguarde...
                     </button>
                 )}
-                {response.error && <p className='error'>{response.error}</p>}
+                {(response.error || formError) && (
+                    <p className='error'>{response.error}</p>
+                )}
             </form>
         </div>
     );

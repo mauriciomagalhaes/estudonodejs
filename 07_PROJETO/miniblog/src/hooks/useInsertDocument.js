@@ -11,7 +11,7 @@ const insertReduce = (state, action) => {
     switch (action.type) {
         case "LOADING":
             return { loading: true, error: null };
-        case "INSERT_DOC":
+        case "INSERTED_DOC":
             return { loading: false, error: null };
         case "ERROR":
             return { loading: false, error: action.payload };
@@ -21,10 +21,12 @@ const insertReduce = (state, action) => {
 };
 
 export const useInsertDocument = (docCollection) => {
+    //console.log(docCollection);
     const [response, dispatch] = useReducer(insertReduce, initialState);
 
     // Deal memory leak
     const [cancelled, setCancelled] = useState(false);
+
     const checkCancelBeforeDispatch = (action) => {
         if (!cancelled) {
             dispatch(action);
@@ -32,6 +34,7 @@ export const useInsertDocument = (docCollection) => {
     };
 
     const insertDocument = async (document) => {
+        console.log(document);
         checkCancelBeforeDispatch({
             type: "LOADING",
         });
@@ -39,13 +42,17 @@ export const useInsertDocument = (docCollection) => {
         try {
             const newDocument = { ...document, createdAt: Timestamp.now() };
 
+            //console.log(newDocument);
+
+            // console.log(db);
+            // Send to firestore
             const insertedDocument = await addDoc(
                 collection(db, docCollection),
                 newDocument
             );
 
             checkCancelBeforeDispatch({
-                type: "INSERT_DOC",
+                type: "INSERTED_DOC",
                 payload: insertedDocument,
             });
         } catch (error) {
