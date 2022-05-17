@@ -1,7 +1,11 @@
 import styles from "./CreatePost.module.css";
 
+/* Hooks */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useInsertDocument } from "../../hooks/useInsertDocument";
+
+/* Contexts */
 import { useAuthValue } from "../../context/AuthContext";
 
 const CreatePost = () => {
@@ -13,7 +17,7 @@ const CreatePost = () => {
 
     const { user } = useAuthValue();
 
-    //tags.split(",").map((tag) => tag.trim());
+    const { insertDocument, response } = useInsertDocument("posts");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,7 +34,8 @@ const CreatePost = () => {
             uid: user.uid,
             createdBy: user.displayName,
         };
-        console.log(post);
+        //console.log(post);
+        insertDocument(post);
     };
 
     return (
@@ -81,14 +86,16 @@ const CreatePost = () => {
                         onChange={(e) => setTags(e.target.value)}
                     />
                 </label>
-                <button className='btn'>Cadastrar</button>
-                {/*                 {!loading && <button className='btn'>Cadastrar</button>}
-                {loading && (
+
+                {!response.loading && (
+                    <button className='btn'>Cadastrar</button>
+                )}
+                {response.loading && (
                     <button className='btn' disable>
                         Aguarde...
                     </button>
                 )}
-                {error && <p className='error'>{error}</p>} */}
+                {response.error && <p className='error'>{response.error}</p>}
             </form>
         </div>
     );
