@@ -29,7 +29,8 @@ const CreatePost = () => {
         } catch (error) {
             setFormError("A imagem precisa ser uma URL.");
         }
- */
+        */
+
         // Create array tags
         const tagsArray = tags
             .split(",")
