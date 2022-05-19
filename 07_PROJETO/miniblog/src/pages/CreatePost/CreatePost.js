@@ -50,6 +50,7 @@ const CreatePost = () => {
         if (!title || !image || !tags || !body) {
             setFormError("Por favor, preencha todos os campos!");
         }
+
         if (formError) return;
 
         insertDocument({
@@ -82,7 +83,6 @@ const CreatePost = () => {
                     <input
                         type='text'
                         name='imagem'
-                        required
                         placeholder='Digite a url da foto do seu post'
                         value={image}
                         onChange={(e) => setImage(e.target.value)}
@@ -93,7 +93,6 @@ const CreatePost = () => {
                     <textarea
                         name='body'
                         placeholder='Digite o conteúdo do post'
-                        required
                         value={body}
                         onChange={(e) => setBody(e.target.value)}
                     />
@@ -103,7 +102,6 @@ const CreatePost = () => {
                     <input
                         type='text'
                         name='tags'
-                        required
                         placeholder='Insira as tags do seu post separadas por vígulas'
                         value={tags}
                         onChange={(e) => setTags(e.target.value)}
