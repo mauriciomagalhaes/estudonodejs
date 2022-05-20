@@ -17,7 +17,9 @@ const CreatePost = () => {
 
     const { user } = useAuthValue();
 
-    const { insertDocument, response } = useInsertDocument("posts");
+    const navigate = useNavigate();
+
+    const { insertDocument, response } = useInsertDocument("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -72,7 +74,6 @@ const CreatePost = () => {
                     <input
                         type='text'
                         name='title'
-                        required
                         placeholder='Digite o título do seu post'
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
@@ -116,9 +117,9 @@ const CreatePost = () => {
                         Aguarde...
                     </button>
                 )}
-                {(response.error || formError) && (
-                    <p className='error'>{response.error}</p>
-                )}
+                {(response.error || formError) &&
+                    (console.log(response),
+                    (<p className='error'>{response.error || formError}</p>))}
             </form>
         </div>
     );

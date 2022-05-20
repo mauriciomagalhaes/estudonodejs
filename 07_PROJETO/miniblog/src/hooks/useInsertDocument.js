@@ -21,13 +21,14 @@ const insertReduce = (state, action) => {
 };
 
 export const useInsertDocument = (docCollection) => {
-    //console.log(docCollection);
     const [response, dispatch] = useReducer(insertReduce, initialState);
 
     // Deal memory leak
     const [cancelled, setCancelled] = useState(false);
 
     const checkCancelBeforeDispatch = (action) => {
+        // console.log(action);
+        // console.log(cancelled);
         if (!cancelled) {
             dispatch(action);
         }
@@ -41,9 +42,7 @@ export const useInsertDocument = (docCollection) => {
 
         try {
             const newDocument = { ...document, createdAt: Timestamp.now() };
-
-            //console.log(newDocument);
-
+            // console.log(newDocument);
             // console.log(db);
             // Send to firestore
             const insertedDocument = await addDoc(
