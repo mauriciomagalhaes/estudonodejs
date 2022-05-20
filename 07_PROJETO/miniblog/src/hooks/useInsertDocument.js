@@ -42,8 +42,7 @@ export const useInsertDocument = (docCollection) => {
 
         try {
             const newDocument = { ...document, createdAt: Timestamp.now() };
-            // console.log(newDocument);
-            // console.log(db);
+
             // Send to firestore
             const insertedDocument = await addDoc(
                 collection(db, docCollection),

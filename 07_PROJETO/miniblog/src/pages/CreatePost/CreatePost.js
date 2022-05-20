@@ -26,12 +26,11 @@ const CreatePost = () => {
         setFormError("");
 
         // Validate url
-        /* try {
+        try {
             new URL(image);
         } catch (error) {
             setFormError("A imagem precisa ser uma URL.");
         }
-        */
 
         // Create array tags
         const tagsArray = tags
@@ -62,6 +61,9 @@ const CreatePost = () => {
             tags: tagsArray,
             uid: user.uid,
         });
+
+        // Redirect to home
+        //navigate("/");
     };
 
     return (
