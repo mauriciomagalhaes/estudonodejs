@@ -46,7 +46,7 @@ const CreatePost = () => {
             uid: user.uid,
             createdBy: user.displayName,
         };
-        //console.log(post);
+        console.log("Page", post);
 
         // check values
         if (!title || !image || !tags || !body) {
@@ -74,6 +74,7 @@ const CreatePost = () => {
                     <input
                         type='text'
                         name='title'
+                        required
                         placeholder='Digite o título do seu post'
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
@@ -84,6 +85,7 @@ const CreatePost = () => {
                     <input
                         type='text'
                         name='imagem'
+                        required
                         placeholder='Digite a url da foto do seu post'
                         value={image}
                         onChange={(e) => setImage(e.target.value)}
@@ -93,6 +95,7 @@ const CreatePost = () => {
                     <span>Conteúdo:</span>
                     <textarea
                         name='body'
+                        required
                         placeholder='Digite o conteúdo do post'
                         value={body}
                         onChange={(e) => setBody(e.target.value)}
@@ -103,6 +106,7 @@ const CreatePost = () => {
                     <input
                         type='text'
                         name='tags'
+                        required
                         placeholder='Insira as tags do seu post separadas por vígulas'
                         value={tags}
                         onChange={(e) => setTags(e.target.value)}
@@ -117,9 +121,9 @@ const CreatePost = () => {
                         Aguarde...
                     </button>
                 )}
-                {(response.error || formError) &&
-                    (console.log(response),
-                    (<p className='error'>{response.error || formError}</p>))}
+                {(response.error || formError) && (
+                    <p className='error'>{response.error || formError}</p>
+                )}
             </form>
         </div>
     );
