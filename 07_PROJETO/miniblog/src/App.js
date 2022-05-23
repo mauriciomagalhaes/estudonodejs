@@ -34,7 +34,7 @@ function App() {
         onAuthStateChanged(auth, (user) => {
             setUser(user);
         });
-    });
+    }, [auth]);
 
     if (loadingUser) {
         return <p>Carregando...</p>;

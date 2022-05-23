@@ -19,7 +19,7 @@ const CreatePost = () => {
 
     const navigate = useNavigate();
 
-    const { insertDocument, response } = useInsertDocument("");
+    const { insertDocument, response } = useInsertDocument();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -37,6 +37,11 @@ const CreatePost = () => {
             .split(",")
             .map((tag) => tag.trim().toLowerCase());
 
+        // check values
+        if (!title || !image || !tags || !body) {
+            setFormError("Por favor, preencha todos os campos!");
+        }
+
         const post = {
             title,
             image,
@@ -46,11 +51,6 @@ const CreatePost = () => {
             createdBy: user.displayName,
         };
         console.log("Page", post);
-
-        // check values
-        if (!title || !image || !tags || !body) {
-            setFormError("Por favor, preencha todos os campos!");
-        }
 
         if (formError) return;
 
@@ -69,7 +69,7 @@ const CreatePost = () => {
     return (
         <div className={styles.create_post}>
             <h2>Create Post</h2>
-            <p>Escreva sobreo que quiser e compartilhe o seu conhecimento</p>
+            <p>Escreva sobre o que quiser e compartilhe o seu conhecimento</p>
             <form onSubmit={handleSubmit}>
                 <label>
                     <span>Título:</span>
