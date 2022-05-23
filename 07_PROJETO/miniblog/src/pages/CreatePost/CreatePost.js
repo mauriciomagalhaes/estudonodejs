@@ -19,7 +19,7 @@ const CreatePost = () => {
 
     const navigate = useNavigate();
 
-    const { insertDocument, response } = useInsertDocument();
+    const { insertDocument, response } = useInsertDocument("posts");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -60,10 +60,11 @@ const CreatePost = () => {
             body,
             tags: tagsArray,
             uid: user.uid,
+            createdBy: user.displayName,
         });
 
         // Redirect to home
-        //navigate("/");
+        navigate("/");
     };
 
     return (

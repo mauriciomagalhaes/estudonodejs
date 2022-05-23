@@ -62,7 +62,7 @@ const Navbar = () => {
                                     isActive ? styles.active : ""
                                 }
                             >
-                                Criar post
+                                Novo post
                             </NavLink>
                         </li>
                         <li>
