@@ -8,7 +8,6 @@ import {
     where,
     QuerySnapshot,
 } from "firebase/firestore";
-import { querystring } from "@firebase/util";
 
 export const useFetchDocuments = (docCollection, search = null, uid = null) => {
     const [documents, setDocuments] = useState(null);
@@ -32,24 +31,26 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
                 qry = await query(collectionRef, orderBy("createdAt", "desc"));
 
                 await onSnapshot(qry, (QuerySnapshot) => {
-                    QuerySnapshot.docs.map((doc) => ({
-                        id: doc.id,
-                        ...doc.data(),
-                    }));
+                    setDocuments(
+                        QuerySnapshot.docs.map((doc) => ({
+                            id: doc.id,
+                            ...doc.data(),
+                        }))
+                    );
                 });
                 setLoading(false);
             } catch (error) {
-                console.log(erro);
                 setError(error.message);
+                console.log(error);
                 setLoading(false);
             }
         }
         loadData();
     }, [docCollection, search, uid, cancelled]);
-
+    //console.log(documents);
     useEffect(() => {
         return () => setCancelled(true);
     }, []);
 
-    return documents, loading, error;
+    return { documents, loading, error };
 };
