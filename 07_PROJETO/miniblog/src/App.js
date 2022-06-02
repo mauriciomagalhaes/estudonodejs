@@ -23,7 +23,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import CreatePost from "./pages/CreatePost/CreatePost";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import Search from "./pages/search/Search";
+import Search from "./pages/Search/Search";
 
 function App() {
     const [user, setUser] = useState(undefined);
