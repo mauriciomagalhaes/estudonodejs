@@ -4,7 +4,7 @@ const Search = () => {
     return (
         <div>
             <h2>Search</h2>
-            <p>{search}</p>
+            {/* <p>{search}</p> */}
         </div>
     );
 };
