@@ -17,7 +17,7 @@ const Home = () => {
         }
     };
 
-    const { navigate } = useNavigate();
+    const navigate = useNavigate();
     const [query, setQuery] = useState("");
     const { documents: posts, loading } = useFetchDocuments("posts");
 
