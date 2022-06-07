@@ -27,8 +27,6 @@ export const useInsertDocument = (docCollection) => {
     const [cancelled, setCancelled] = useState(false);
 
     const checkCancelBeforeDispatch = (action) => {
-        //console.log(action);
-        // console.log(cancelled);
         if (!cancelled) {
             dispatch(action);
         }
