@@ -19,7 +19,7 @@ const CreatePost = () => {
 
     const navigate = useNavigate();
 
-    const { insertDocument, response } = useInsertDocument("");
+    const { insertDocument, response } = useInsertDocument("posts");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -64,7 +64,7 @@ const CreatePost = () => {
         });
 
         // Redirect to home
-        //navigate("/");
+        navigate("/");
     };
 
     return (
