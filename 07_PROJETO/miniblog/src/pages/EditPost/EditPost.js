@@ -23,6 +23,7 @@ const EditPost = () => {
     const navigate = useNavigate();
 
     const { document: post, loading, error } = useFetchDocument("posts", id);
+    const { updateDocument, response } = useUpdateDocument("posts");
 
     //console.log(post);
     useEffect(() => {
@@ -52,12 +53,19 @@ const EditPost = () => {
             .split(",")
             .map((tag) => tag.trim().toLowerCase());
 
+        const data = {
+            title,
+            image,
+            body,
+            tags: tags.split(",").map((tag) => tag.trim()),
+        };
+
         // check values
         if (!title || !image || !tags || !body) {
             setFormError("Por favor, preencha todos os campos!");
         }
-
-        if (formError) return;
+        updateDocument(id, data);
+        //if (formError) return;
         // Redirect to home
         navigate("/");
     };
@@ -89,8 +97,8 @@ const EditPost = () => {
                         onChange={(e) => setImage(e.target.value)}
                     />
                 </label>
-                <p>Preview Image</p>
-                <img src={image} alt='Preview' />
+                <p className={styles.preview_title}>Preview da imagem atual:</p>
+                <img className={styles.image_preview} src={image} alt={title} />
                 <label>
                     <span>Conteúdo:</span>
                     <textarea
@@ -113,14 +121,16 @@ const EditPost = () => {
                     />
                 </label>
 
-                {!loading && <button className='btn'>Editar post!</button>}
-                {loading && (
+                {!response.loading && (
+                    <button className='btn'>Editar post!</button>
+                )}
+                {response.loading && (
                     <button className='btn' disable>
                         Aguarde...
                     </button>
                 )}
-                {(error || formError) && (
-                    <p className='error'>{error || formError}</p>
+                {(response.error || formError) && (
+                    <p className='error'>{response.error || formError}</p>
                 )}
             </form>
         </div>
